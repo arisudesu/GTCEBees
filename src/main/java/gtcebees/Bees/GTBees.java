@@ -44,7 +44,7 @@ public enum GTBees implements IBeeDefinition {
             registerMutation(BeeDefinition.INDUSTRIOUS, BeeDefinition.DILIGENT, 20);
         }
     },
-    SLIME(GTBranches.FUELIS, "slime", true, new Color(0x4e9e55), new Color(0x00e012)) {
+    SLIME(GTBranches.FUELIS, "slime", true, new Color(0x4e9e55), new Color(0x00e012))   {
         @Override
         protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
             beeSpecies.addProduct(GTCombItem.getComb(GTCombs.RUBBERY, 1), 0.3f);
@@ -79,7 +79,7 @@ public enum GTBees implements IBeeDefinition {
     RUBBER(GTBranches.FUELIS, "rubbery", true, new Color(0x2e8f5b), new Color(0xdcc289)) {
         @Override
         protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
-            beeSpecies.addProduct(MetaItems.RUBBER_DROP.getStackForm(), 0.15f);
+            beeSpecies.addProduct(MetaItems.STICKY_RESIN.getStackForm(), 0.15f);
             beeSpecies.addProduct(ModuleApiculture.getItems().beeComb.get(EnumHoneyComb.HONEY, 1), 0.3f);
         }
 

@@ -2,7 +2,7 @@ package gtcebees;
 
 import forestry.api.core.ForestryAPI;
 import forestry.core.items.IColoredItem;
-import gtcebees.Items.GTCombs;
+import gtcebees.items.GTCombs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
@@ -17,6 +17,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
+    @SubscribeEvent
+    public static void registerModels(ModelRegistryEvent event) {
+        GTCombs.combItem.registerModel(GTCombs.combItem, ForestryAPI.modelManager);
+    }
+
     public void preInit() {
         super.preInit();
     }
@@ -26,11 +31,6 @@ public class ClientProxy extends CommonProxy {
         ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
         itemColors.registerItemColorHandler(ColoredItemItemColor.INSTANCE, GTCombs.combItem);
         super.postInit();
-    }
-
-    @SubscribeEvent
-    public static void registerModels(ModelRegistryEvent event) {
-        GTCombs.combItem.registerModel(GTCombs.combItem, ForestryAPI.modelManager);
     }
 
     @SideOnly(Side.CLIENT)

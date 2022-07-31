@@ -1,4 +1,4 @@
-package gtcebees.Recipes;
+package gtcebees.recipes;
 
 import forestry.core.ModuleCore;
 import forestry.core.fluids.Fluids;
@@ -7,8 +7,8 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import gtcebees.GTCEBeesConfig;
-import gtcebees.Items.GTCombItem;
-import gtcebees.Items.GTCombs;
+import gtcebees.items.GTCombItem;
+import gtcebees.items.GTCombs;
 
 public class GTMachineRecipes {
     public static void postInit() {

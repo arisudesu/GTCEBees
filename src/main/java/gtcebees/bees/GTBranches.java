@@ -1,4 +1,4 @@
-package gtcebees.Bees;
+package gtcebees.bees;
 
 import forestry.api.apiculture.BeeManager;
 import forestry.api.apiculture.EnumBeeChromosome;
@@ -96,30 +96,13 @@ public enum GTBranches implements IBranchDefinition {
         }
     };
 
+    @Nullable
+    private static IAllele[] defaultTemplate;
     private final IClassification branch;
 
     GTBranches(String scientific) {
         branch = BeeManager.beeFactory.createBranch(this.name().toLowerCase(Locale.ENGLISH), scientific);
     }
-
-    protected void setBranchProperties(IAllele[] template) {
-
-    }
-
-    @Override
-    public final IAllele[] getTemplate() {
-        IAllele[] template = getDefaultTemplate();
-        setBranchProperties(template);
-        return template;
-    }
-
-    @Override
-    public final IClassification getBranch() {
-        return branch;
-    }
-
-    @Nullable
-    private static IAllele[] defaultTemplate;
 
     private static IAllele[] getDefaultTemplate() {
         if (defaultTemplate == null) {
@@ -139,5 +122,21 @@ public enum GTBranches implements IBranchDefinition {
             AlleleHelper.getInstance().set(defaultTemplate, EnumBeeChromosome.EFFECT, AlleleEffects.effectNone);
         }
         return Arrays.copyOf(defaultTemplate, defaultTemplate.length);
+    }
+
+    protected void setBranchProperties(IAllele[] template) {
+
+    }
+
+    @Override
+    public final IAllele[] getTemplate() {
+        IAllele[] template = getDefaultTemplate();
+        setBranchProperties(template);
+        return template;
+    }
+
+    @Override
+    public final IClassification getBranch() {
+        return branch;
     }
 }

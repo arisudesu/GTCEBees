@@ -1,4 +1,4 @@
-package gtcebees.Bees;
+package gtcebees.bees;
 
 import forestry.api.apiculture.*;
 import forestry.api.core.EnumHumidity;
@@ -13,8 +13,8 @@ import forestry.apiculture.items.EnumHoneyComb;
 import forestry.core.genetics.alleles.AlleleHelper;
 import forestry.core.genetics.mutations.MutationConditionRequiresResource;
 import gregtech.common.items.MetaItems;
-import gtcebees.Items.GTCombItem;
-import gtcebees.Items.GTCombs;
+import gtcebees.items.GTCombItem;
+import gtcebees.items.GTCombs;
 import mezz.jei.config.Constants;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -44,7 +44,7 @@ public enum GTBees implements IBeeDefinition {
             registerMutation(BeeDefinition.INDUSTRIOUS, BeeDefinition.DILIGENT, 20);
         }
     },
-    SLIME(GTBranches.FUELIS, "slime", true, new Color(0x4e9e55), new Color(0x00e012))   {
+    SLIME(GTBranches.FUELIS, "slime", true, new Color(0x4e9e55), new Color(0x00e012)) {
         @Override
         protected void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies) {
             beeSpecies.addProduct(GTCombItem.getComb(GTCombs.RUBBERY, 1), 0.3f);
@@ -582,16 +582,6 @@ public enum GTBees implements IBeeDefinition {
         this.species = speciesBuilder.build();
     }
 
-    protected abstract void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies);
-
-    protected abstract void setAlleles(IAllele[] template);
-
-    protected abstract void registerMutations();
-
-    protected boolean isSecret() {
-        return false;
-    }
-
     public static void initBees() {
         for (GTBees bee : values()) {
             bee.init();
@@ -603,6 +593,16 @@ public enum GTBees implements IBeeDefinition {
 
     public static void preInit() {
         MinecraftForge.EVENT_BUS.post(new AlleleSpeciesRegisterEvent<>(BeeManager.beeRoot, IAlleleBeeSpecies.class));
+    }
+
+    protected abstract void setSpeciesProperties(IAlleleBeeSpeciesBuilder beeSpecies);
+
+    protected abstract void setAlleles(IAllele[] template);
+
+    protected abstract void registerMutations();
+
+    protected boolean isSecret() {
+        return false;
     }
 
     private void init() {

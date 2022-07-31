@@ -1,4 +1,4 @@
-package gtcebees.Items;
+package gtcebees.items;
 
 import forestry.api.core.IModelManager;
 import forestry.api.core.Tabs;
@@ -19,6 +19,10 @@ public class GTCombItem extends ItemForestry implements IColoredItem {
         setCreativeTab(Tabs.tabApiculture);
         setRegistryName(GTCEBees.MODID, "comb");
         setUnlocalizedName(GTCEBees.MODID + ":comb");
+    }
+
+    public static ItemStack getComb(GTCombs honeyComb, int amount) {
+        return new ItemStack(GTCombs.combItem, amount, honeyComb.ordinal());
     }
 
     @Override
@@ -51,11 +55,6 @@ public class GTCombItem extends ItemForestry implements IColoredItem {
             for (int i = 0; i < GTCombs.VALUES.length; i++) {
                 subItems.add(new ItemStack(this, 1, i));
             }
-    }
-
-
-    public static ItemStack getComb(GTCombs honeyComb, int amount) {
-        return new ItemStack(GTCombs.combItem, amount, honeyComb.ordinal());
     }
 
     @Override

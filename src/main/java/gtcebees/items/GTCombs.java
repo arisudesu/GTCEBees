@@ -1,4 +1,4 @@
-package gtcebees.Items;
+package gtcebees.items;
 
 import net.minecraft.util.IStringSerializable;
 
@@ -42,13 +42,11 @@ public enum GTCombs implements IStringSerializable {
     STARGATIUM(new Color(0x002400), new Color(0x002c00));
 
     public static final GTCombs[] VALUES = values();
-
+    public static GTCombItem combItem = new GTCombItem();
     public final String name;
     public final int primaryColor;
     public final int secondaryColor;
     private final boolean secret;
-
-    public static GTCombItem combItem = new GTCombItem();
 
     GTCombs(Color primary, Color secondary) {
         this(primary, secondary, false);
@@ -61,15 +59,15 @@ public enum GTCombs implements IStringSerializable {
         this.secret = secret;
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
     public static GTCombs get(int meta) {
         if (meta >= VALUES.length) {
             meta = 0;
         }
         return VALUES[meta];
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

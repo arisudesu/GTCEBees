@@ -1,4 +1,4 @@
-package gtcebees.Recipes;
+package gtcebees.recipes;
 
 import com.google.common.collect.ImmutableMap;
 import forestry.api.recipes.RecipeManagers;
@@ -8,8 +8,8 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
-import gtcebees.Items.GTCombItem;
-import gtcebees.Items.GTCombs;
+import gtcebees.items.GTCombItem;
+import gtcebees.items.GTCombs;
 
 
 public class ForestryMachineRecipes {

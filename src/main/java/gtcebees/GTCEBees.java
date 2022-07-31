@@ -1,6 +1,6 @@
 package gtcebees;
 
-import gtcebees.Bees.GTBees;
+import gtcebees.bees.GTBees;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;

@@ -9,15 +9,17 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = GTCEBees.MODID,
+@Mod(
+        modid = GTCEBees.MODID,
         name = GTCEBees.NAME,
-        version = GTCEBees.VERSION,
-        dependencies = "required-after:gregtech;required-after:forestry"
+        dependencies = GTCEBees.DEPENDENCIES,
+        updateJSON = GTCEBees.UPDATE_URL
 )
 public class GTCEBees {
-    public static final String MODID = "gtcebees";
-    public static final String NAME = "GTCE Bees";
-    public static final String VERSION = "@VERSION@";
+    public static final String MODID = "@MOD_ID@";
+    public static final String NAME = "@MOD_NAME@";
+    public static final String DEPENDENCIES = "required-after:gregtech;required-after:forestry";
+    public static final String UPDATE_URL = "@MOD_UPDATE_URL@";
 
     @SidedProxy(
             modId = MODID,

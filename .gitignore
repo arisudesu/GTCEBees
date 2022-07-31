@@ -18,7 +18,8 @@ build
 .gradle
 
 # other
+eclipse
 run
-libs
-classes
-gradle/wrapper/gradle-wrapper.properties
+
+# Files from Forge MDK
+forge*changelog.txt

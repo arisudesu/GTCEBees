@@ -1,86 +1,108 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
 buildscript {
     repositories {
-        jcenter()
-        maven { url = "http://files.minecraftforge.net/maven" }
+        maven {
+            name 'MinecraftForge'
+            url 'https://files.minecraftforge.net/maven'
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
+
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
 apply plugin: 'net.minecraftforge.gradle.forge'
 
+group = project.mod_maven_group
+archivesBaseName = project.mod_jar_name
+version = "${project.minecraft_version}-${project.mod_version}"
 
-version = "${minecraft_version}-${mod_version}"
-group = "gtcebees"
-archivesBaseName = "GTCEBees"
-
-sourceCompatibility = targetCompatibility = '1.8'
-compileJava {
-    sourceCompatibility = targetCompatibility = '1.8'
-}
+sourceCompatibility = compileJava.sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = compileJava.targetCompatibility = JavaVersion.VERSION_1_8
 
 minecraft {
-    version = "${minecraft_version}-14.23.4.2749"
+    version = "${project.minecraft_version}-${project.forge_version}"
+    mappings = "${project.mappings_channel}_${project.mappings_version}"
     runDir = "run"
-    mappings = "snapshot_20171003"
-
-    replace("@VERSION@",project.version)
-    replaceIn("GTCEBees.java")
 }
 
 repositories {
     maven {
-        name = "ChickenBones maven"
-        url = "http://chickenbones.net/maven/"
+        url 'https://cursemaven.com'
     }
     maven {
-        name = "tterrag maven"
-        url = "http://maven.tterrag.com/"
+    	url 'http://maven.ic2.player.to' // Forestry
     }
     maven {
-        name = "Progwml6 maven"
-        url = "http://dvs1.progwml6.com/files/maven/"
+        url 'https://chickenbones.net/maven/' // CCL
     }
     maven {
-        name = "CraftTweaker Maven"
-        url = "https://maven.blamejared.com/"
+        url 'https://dvs1.progwml6.com/files/maven/' // JEI
     }
     maven {
-        name = "tehnut"
-        url = "http://tehnut.info/maven"
-    }
-    maven {
-    	name = "Forestry Maven"
-    	url = "http://maven.ic2.player.to"
-    }
-    maven {
-        name = "CurseForge"
-        url = "https://minecraft.curseforge.com/api/maven/"
+        url 'https://jenkins.bdew.net/maven/' // JEIBees
     }
 }
 
 dependencies {
-    deobfCompile "codechicken:ChickenASM:${short_version}-${chickenasm_version}"
-    deobfCompile "codechicken:CodeChickenLib:${minecraft_version}-${ccl_version}:deobf"
-    deobfCompile "codechicken:ForgeMultipart:${minecraft_version}-${multipart_version}:deobf"
-    deobfCompile "CraftTweaker2:CraftTweaker2-MC${stripped_version}-Main:${crafttweaker_version}"
-    deobfCompile "mezz.jei:jei_${minecraft_version}:${jei_version}"
-    deobfCompile "net.sengir.forestry:forestry_${minecraft_version}:${forestry_version}"
-    deobfCompile "binnie:binnie-mods-${minecraft_version}:${binnie_version}"
-    compile files("libs/gregtech-${minecraft_version}-${gt_version}.jar")
+    compile "codechicken:CodeChickenLib:${project.deps_ccl_version}:universal"
+
+    deobfCompile "curse.maven:gregtech-${project.deps_gregtechceu_version}-${project.deps_gregtechceu_curse_ref}"
+    deobfCompile "net.sengir.forestry:forestry_${project.deps_forestry_version}"
+    deobfCompile "mezz.jei:jei_${project.deps_jei_version}"
+
+    compile "net.bdew:jeibees:${project.deps_jeibees_version}:dev"
+    // compile "binnie:binnie-mods-${project.deps_binnie_version}"
 }
 
 processResources {
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-                
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand(project.properties)
     }
-        
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
+    }
+    duplicatesStrategy = 'include'
+}
+
+task processSource(type: Sync) {
+    from sourceSets.main.java
+    into "$buildDir/src"
+    filter(ReplaceTokens, tokens: [
+            MOD_ID        : project.mod_id,
+            MOD_NAME      : project.mod_name,
+            MOD_UPDATE_URL: project.mod_update_url,
+    ])
+}
+
+compileJava {
+    source = processSource.outputs
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+jar {
+    finalizedBy 'reobfJar'
+    manifest {
+        attributes([
+                'Specification-Title'     : project.mod_name,
+                'Specification-Version'   : project.mod_version,
+                'Specification-Vendor'    : project.mod_author,
+                'Implementation-Title'    : project.mod_id,
+                'Implementation-Version'  : project.mod_version,
+                'Implementation-Vendor'   : project.mod_author,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
     }
 }

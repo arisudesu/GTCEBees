@@ -1,0 +1,11 @@
+{
+  "homepage": "https://github.com/arisudesu/GTCEBees",
+  "1.12.2": {
+    "1.12.2-1.0.4": "Patches from FrederikRasmussen/GTCEBees\nChanges for GregTechCEu 2.2.1\n * Lignite replaced with charcoal\nAdd missing Clay and Oil species name",
+    "1.12.2-1.0.5": "Fix invalid crafts"
+  },
+  "promos": {
+    "1.12.2-latest": "1.12.2-1.0.5",
+    "1.12.2-recommended": "1.12.2-1.0.5"
+  }
+}

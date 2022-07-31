@@ -1,5 +1,7 @@
-package gtcebees.bees;
+package dev.arisu.gtcebees.bees;
 
+import dev.arisu.gtcebees.items.GTCombItem;
+import dev.arisu.gtcebees.items.GTCombs;
 import forestry.api.apiculture.*;
 import forestry.api.core.EnumHumidity;
 import forestry.api.core.EnumTemperature;
@@ -13,8 +15,6 @@ import forestry.apiculture.items.EnumHoneyComb;
 import forestry.core.genetics.alleles.AlleleHelper;
 import forestry.core.genetics.mutations.MutationConditionRequiresResource;
 import gregtech.common.items.MetaItems;
-import gtcebees.items.GTCombItem;
-import gtcebees.items.GTCombs;
 import mezz.jei.config.Constants;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

@@ -1,10 +1,10 @@
-package gtcebees.items;
+package dev.arisu.gtcebees.items;
 
+import dev.arisu.gtcebees.GTCEBees;
 import forestry.api.core.IModelManager;
 import forestry.api.core.Tabs;
 import forestry.core.items.IColoredItem;
 import forestry.core.items.ItemForestry;
-import gtcebees.GTCEBees;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

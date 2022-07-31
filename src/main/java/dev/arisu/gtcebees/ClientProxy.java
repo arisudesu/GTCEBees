@@ -1,8 +1,8 @@
-package gtcebees;
+package dev.arisu.gtcebees;
 
+import dev.arisu.gtcebees.items.GTCombs;
 import forestry.api.core.ForestryAPI;
 import forestry.core.items.IColoredItem;
-import gtcebees.items.GTCombs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;

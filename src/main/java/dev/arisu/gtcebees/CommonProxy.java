@@ -1,5 +1,8 @@
-package gtcebees;
+package dev.arisu.gtcebees;
 
+import dev.arisu.gtcebees.items.GTCombs;
+import dev.arisu.gtcebees.recipes.ForestryMachineRecipes;
+import dev.arisu.gtcebees.recipes.GTMachineRecipes;
 import forestry.api.recipes.ICentrifugeRecipe;
 import forestry.api.recipes.ISqueezerRecipe;
 import forestry.api.recipes.RecipeManagers;
@@ -7,9 +10,6 @@ import forestry.core.items.ItemFluidContainerForestry;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gtcebees.items.GTCombs;
-import gtcebees.recipes.ForestryMachineRecipes;
-import gtcebees.recipes.GTMachineRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;

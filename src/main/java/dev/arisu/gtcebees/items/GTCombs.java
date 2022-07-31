@@ -1,4 +1,4 @@
-package gtcebees.items;
+package dev.arisu.gtcebees.items;
 
 import net.minecraft.util.IStringSerializable;
 

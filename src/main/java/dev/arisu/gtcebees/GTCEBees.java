@@ -1,6 +1,6 @@
-package gtcebees;
+package dev.arisu.gtcebees;
 
-import gtcebees.bees.GTBees;
+import dev.arisu.gtcebees.bees.GTBees;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -23,8 +23,8 @@ public class GTCEBees {
 
     @SidedProxy(
             modId = MODID,
-            clientSide = "gtcebees.ClientProxy",
-            serverSide = "gtcebees.CommonProxy"
+            clientSide = "dev.arisu.gtcebees.ClientProxy",
+            serverSide = "dev.arisu.gtcebees.CommonProxy"
     )
     public static CommonProxy proxy;
 

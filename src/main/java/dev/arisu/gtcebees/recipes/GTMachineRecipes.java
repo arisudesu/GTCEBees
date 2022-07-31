@@ -1,14 +1,14 @@
-package gtcebees.recipes;
+package dev.arisu.gtcebees.recipes;
 
+import dev.arisu.gtcebees.GTCEBeesConfig;
+import dev.arisu.gtcebees.items.GTCombItem;
+import dev.arisu.gtcebees.items.GTCombs;
 import forestry.core.ModuleCore;
 import forestry.core.fluids.Fluids;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
-import gtcebees.GTCEBeesConfig;
-import gtcebees.items.GTCombItem;
-import gtcebees.items.GTCombs;
 
 public class GTMachineRecipes {
     public static void postInit() {

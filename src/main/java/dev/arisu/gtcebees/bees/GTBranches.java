@@ -1,4 +1,4 @@
-package gtcebees.bees;
+package dev.arisu.gtcebees.bees;
 
 import forestry.api.apiculture.BeeManager;
 import forestry.api.apiculture.EnumBeeChromosome;

@@ -1,4 +1,4 @@
-package gtcebees;
+package dev.arisu.gtcebees;
 
 import net.minecraftforge.common.config.Config;
 

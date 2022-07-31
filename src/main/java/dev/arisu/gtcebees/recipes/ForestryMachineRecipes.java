@@ -1,6 +1,8 @@
-package gtcebees.recipes;
+package dev.arisu.gtcebees.recipes;
 
 import com.google.common.collect.ImmutableMap;
+import dev.arisu.gtcebees.items.GTCombItem;
+import dev.arisu.gtcebees.items.GTCombs;
 import forestry.api.recipes.RecipeManagers;
 import forestry.apiculture.ModuleApiculture;
 import forestry.core.ModuleCore;
@@ -8,8 +10,6 @@ import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
-import gtcebees.items.GTCombItem;
-import gtcebees.items.GTCombs;
 
 
 public class ForestryMachineRecipes {
